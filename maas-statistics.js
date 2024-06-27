@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			Maas статистика
-// @version			1.4
+// @version			1.6
 // @description		Отображает статистику работы
 // @updateURL		https://github.com/saddedmoroz/tools/blob/master/maas-statistics.meta.js
 // @downloadURL		https://github.com/saddedmoroz/tools/blob/master/maas-statistics.js
