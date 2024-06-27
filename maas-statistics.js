@@ -1,8 +1,7 @@
 // ==UserScript==
 // @name			Maas статистика
-// @version			1.6
+// @version			1.4
 // @description		Отображает статистику работы
-// @updateURL		https://github.com/saddedmoroz/tools/blob/master/maas-statistics.meta.js
 // @downloadURL		https://github.com/saddedmoroz/tools/blob/master/maas-statistics.js
 // @author			t.me/yreawesome
 // @match			https://moderation.avito.ru/line/*
@@ -11,6 +10,11 @@
 
 'use strict';
 
+// @match			https://moderation.avito.ru/line/item-photo-check/*
+// @match			https://moderation.avito.ru/line/item-offensive-language/*
+// @match			https://moderation.avito.ru/line/nepravilnaya-kategoriya/*
+
+// Здесь другие звуки: https://github.com/flukeout/simple-sounds/tree/gh-pages/sounds
 const audioTick = new Audio('https://flukeout.github.io/simple-sounds/sounds/coin.mp3');
 
 const date_time = new Date();
