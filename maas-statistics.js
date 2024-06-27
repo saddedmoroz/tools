@@ -11,7 +11,6 @@
 
 'use strict';
 
-// Здесь другие звуки: https://github.com/flukeout/simple-sounds/tree/gh-pages/sounds
 const audioTick = new Audio('https://flukeout.github.io/simple-sounds/sounds/coin.mp3');
 
 const date_time = new Date();
