@@ -1,0 +1,27 @@
+/*
+    Задать строку выше как "URL, начинающимся с":
+    https://moderation.avito.ru/line/nepravilnaya-kategoriya
+*/
+
+/* Задать ширину рабочей области
+   Влияет на ширину текста в окне а также на количество фото в ряду */
+div.coreDocument-module-content-vaCPV {
+    min-width: 0px !important; /* оставить = 0px */
+    /* Подобрать значение: 1000px, 1100px и т.д. под желаемое количество фото в ряду.
+       На количество фото влияет значение размера фотки (см. ниже) */
+    max-width: 1100px !important;
+}
+
+/* Отключить превью фото при наведении курсора мышки */
+img.imagePreview-module-image-FSc_O {
+    display: none;
+}
+
+/* Задаёт размер каждой фотки.
+   Значения желательно указывать одинаковыми.
+   Размер влияет на их количество в ряду (см. выше)
+   По-умолчанию размеры = 150px */
+.image-module-imageWrapper-tSdSZ, .image-module-imageContainer-JI1kE {
+    width: 300px !important;
+    height: 300px !important;
+}
