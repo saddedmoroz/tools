@@ -1,0 +1,6 @@
+/*
+   Стиль для дополнения Stylish скрывает элементы в нижней панели.
+   Создать для URL, начинающимся с https://moderation.avito.ru/line
+*/
+
+div.actionsPanel-module-right-mRtxo { display: none; }
