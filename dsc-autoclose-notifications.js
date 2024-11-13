@@ -1,0 +1,13 @@
+// ==UserScript==
+// @name			DSC: закрытие уведомлений
+// @version			1.0
+// @description		Автоматически закрывает уведомления
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-autoclose-notifications.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-autoclose-notifications.js
+// @author			saddedmoroz
+// @match			https://centiman.avito.ru/*
+// ==/UserScript==
+
+'use strict';
+
+function _0x3816(_0x4a4b4,_0x48c00a){const _0x1c94c6=_0x1c94();return _0x3816=function(_0x381663,_0x1778d2){_0x381663=_0x381663-0x66;let _0x507d4c=_0x1c94c6[_0x381663];return _0x507d4c;},_0x3816(_0x4a4b4,_0x48c00a);}function _0x1c94(){const _0x54ec39=['4BwNSui','56iFeheA','33518166XHuonp','length','12sUtKua','874728BDbcdG','click','885382hNryWN','7326324Gwgoto','div.el-notification__closeBtn','1901815GPvmBe','querySelectorAll','3805329hTbLer','12288070VTtlTQ','2BCtvKI'];_0x1c94=function(){return _0x54ec39;};return _0x1c94();}(function(_0x2acedd,_0x39d1cd){const _0x59ba98=_0x3816,_0x562717=_0x2acedd();while(!![]){try{const _0x1d06fc=-parseInt(_0x59ba98(0x69))/0x1*(-parseInt(_0x59ba98(0x70))/0x2)+-parseInt(_0x59ba98(0x6e))/0x3*(parseInt(_0x59ba98(0x71))/0x4)+parseInt(_0x59ba98(0x6c))/0x5*(-parseInt(_0x59ba98(0x66))/0x6)+-parseInt(_0x59ba98(0x72))/0x7*(-parseInt(_0x59ba98(0x67))/0x8)+-parseInt(_0x59ba98(0x6a))/0x9+-parseInt(_0x59ba98(0x6f))/0xa+parseInt(_0x59ba98(0x73))/0xb;if(_0x1d06fc===_0x39d1cd)break;else _0x562717['push'](_0x562717['shift']());}catch(_0x578ac3){_0x562717['push'](_0x562717['shift']());}}}(_0x1c94,0xb37e4),setInterval(()=>{const _0x3f8c6e=_0x3816,_0x408b9a=document[_0x3f8c6e(0x6d)](_0x3f8c6e(0x6b));let _0x25a9a9=_0x408b9a[_0x3f8c6e(0x74)];if(_0x25a9a9>0x0){while(_0x25a9a9--)_0x408b9a[_0x25a9a9][_0x3f8c6e(0x68)]();}},0x7d0));
