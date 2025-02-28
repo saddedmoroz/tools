@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name			DSC: хоткеи настраиваемые
-// @version			1.0
-// @description		27-02-2025
+// @version			1.1
+// @description		28-02-2025
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==
@@ -12,28 +12,35 @@
 
 /*
 	Клавиши для резолюций.
-	Клавиши можно задать свои, а ненужные удалить.
-	Их название смотреть в блоке 'e.code' здесь: https://keyjs.dev/
-	send: true означает что после нажатия на резолюцию будет нажата кнопка Готово.
-	send: false означает что резолюция будет выбрана/снята, кнопка Готово нажиматься не будет.
+	Клавиши можно задать свои, а ненужные удалить/закомментировать или отключить (enabled: false).
+
+	Количество клавиш лучше выставлять равным количеству резолюций в проекте, но можно больше. Если указано меньше - смотри пример 1.
+	Пример 1. В проекте 5 резолюций, а здесь выставлено 3 строки. Последние 2 резолюции в списке не будут выбираться.
+	Пример 2. В проекте 3 резолюции, но нужны только № 1 и № 3.
+	В этом примере обязательно должно быть 3 строки. Можно больше, но не менее 3:
+		{ code: 'Digit1', enabled: true, send: false }, // резолюция № 1 будет выбрана/снята нажатием клавиши
+		{ code: 'Digit2', enabled: false, send: false }, // резолюция № 2 не будет выбрана/снята нажатием клавиши
+		{ code: 'Digit3', enabled: true, send: false }, // резолюция № 3 будет выбрана/снята нажатием клавиши
+
+	code: 'Digit1' - название других клавиш смотреть в блоке 'e.code' здесь: https://keyjs.dev/
+	send: true - после нажатия на резолюцию будет нажата кнопка Готово.
+	send: false - резолюция будет выбрана/снята, кнопка Готово нажиматься не будет.
+	enabled: true - клавиша включена (будет реагировать на нажатие).
+	enabled: false - клавиша выключена (не будет реагировать на нажатие).
 */
 const gKeyRes = [
-	{ code: 'Digit1', send: true }, // первая резолюция в списке
-	{ code: 'Digit2', send: false }, // вторая резолюция в списке и т.д.
-	{ code: 'Digit3', send: false },
-	{ code: 'Digit4', send: false },
-	{ code: 'Digit5', send: false },
-	{ code: 'Digit6', send: false },
-	{ code: 'Digit7', send: false },
-	{ code: 'Digit8', send: false },
-	{ code: 'Digit9', send: false },
+	{ code: 'Digit1', enabled: true, send: true }, // первая резолюция в списке
+	{ code: 'Digit2', enabled: true, send: false }, // вторая резолюция в списке и т.д.
+	{ code: 'Digit3', enabled: true, send: false },
+	{ code: 'Digit4', enabled: true, send: false },
+	{ code: 'Digit5', enabled: true, send: false },
 ];
 const gKeyResLen = gKeyRes.length;
 
 /*
 	Клавиши для отправки резолюций (Готово).
-	Клавиши можно задать свои, а ненужные удалить.
-	Их название смотреть в блоке 'e.code' здесь: https://keyjs.dev/
+	Клавиши можно задать свои, а ненужные удалить/закомментировать.
+	Название других клавиш смотреть в блоке 'e.code' здесь: https://keyjs.dev/
 */
 const gKeySubmit = [
 	'Space',
@@ -68,7 +75,7 @@ function ProcessKeyEvent(e) {
 	let i = gKeyResLen, key;
 	while (i--) {
 		key = gKeyRes[i];
-		if (e.code.indexOf(key.code) >= 0) {
+		if (key.enabled && e.code.indexOf(key.code) >= 0) {
 			ClickResolution(i);
 			if (key.send) ClickSubmit();
 			return;
