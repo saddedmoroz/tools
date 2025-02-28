@@ -12,28 +12,35 @@
 
 /*
 	Клавиши для резолюций.
-	Клавиши можно задать свои, а ненужные удалить/закомментировать или отключить (enabled: false).
-
-	Количество клавиш лучше выставлять равным количеству резолюций в проекте, но можно больше. Если указано меньше - смотри пример 1.
-	Пример 1. В проекте 5 резолюций, а здесь выставлено 3 строки. Последние 2 резолюции в списке не будут выбираться.
-	Пример 2. В проекте 3 резолюции, но нужны только № 1 и № 3.
-	В этом примере обязательно должно быть 3 строки. Можно больше, но не менее 3:
-		{ code: 'Digit1', enabled: true, send: false }, // резолюция № 1 будет выбрана/снята нажатием клавиши
-		{ code: 'Digit2', enabled: false, send: false }, // резолюция № 2 не будет выбрана/снята нажатием клавиши
-		{ code: 'Digit3', enabled: true, send: false }, // резолюция № 3 будет выбрана/снята нажатием клавиши
+	Клавиши можно задать свои, а ненужные удалить/закомментировать.
+	В каком порядке указаны индексы (index) в списке не имеет значения.
 
 	code: 'Digit1' - название других клавиш смотреть в блоке 'e.code' здесь: https://keyjs.dev/
 	send: true - после нажатия на резолюцию будет нажата кнопка Готово.
 	send: false - резолюция будет выбрана/снята, кнопка Готово нажиматься не будет.
-	enabled: true - клавиша включена (будет реагировать на нажатие).
-	enabled: false - клавиша выключена (не будет реагировать на нажатие).
+	index: 1 - индекс резолюции, начинается всегда с 1.
+
+	Примеры:
+	Клавиша J и цифра 5 на нумпаде будут по разному работать с 5 резолюцией по списку в проекте.
+	Но при нажатии J резолюция не будет отправлена, а при нажатии цифры 5 на нумпаде - сразу отправлена.
+		{ code: 'KeyJ', index: 5, send: false },
+		{ code: 'Numpad5', index: 5, send: true },
+	Порядок расположения индексов не имеет значения. Цифра 8 выделит/снимет 2 резолюцию, а цифра 9 - 1 резолюцию.
+		{ code: 'Digit8', index: 2, send: false },
+		{ code: 'Digit9', index: 1, send: false },
+	Можно дублировать действия с одной резолюцией как угодно.
+	В этом примере 3 разные клавиши делают одно и то же действие с 4 резолюцией.
+		{ code: 'Digit3', index: 4, send: false },
+		{ code: 'KeyU', index: 4, send: false },
+		{ code: 'Numpad8', index: 4, send: false },
 */
 const gKeyRes = [
-	{ code: 'Digit1', enabled: true, send: true }, // первая резолюция в списке
-	{ code: 'Digit2', enabled: true, send: false }, // вторая резолюция в списке и т.д.
-	{ code: 'Digit3', enabled: true, send: false },
-	{ code: 'Digit4', enabled: true, send: false },
-	{ code: 'Digit5', enabled: true, send: false },
+	{ code: 'Digit1', index: 1, send: true }, // при нажатии на цифру 1 (не нумпад), будет выбрана первая резолюция в списке и сразу отправлена.
+	{ code: 'Digit2', index: 2, send: false }, // вторая резолюция в списке, но без отправки
+	{ code: 'Digit3', index: 3, send: false },
+	{ code: 'Digit4', index: 4, send: false },
+	{ code: 'Digit5', index: 5, send: false },
+	{ code: 'Digit6', index: 6, send: false },
 ];
 const gKeyResLen = gKeyRes.length;
 
@@ -75,8 +82,8 @@ function ProcessKeyEvent(e) {
 	let i = gKeyResLen, key;
 	while (i--) {
 		key = gKeyRes[i];
-		if (key.enabled && e.code.indexOf(key.code) >= 0) {
-			ClickResolution(i);
+		if (e.code.indexOf(key.code) >= 0) {
+			ClickResolution(key.index - 1);
 			if (key.send) ClickSubmit();
 			return;
 		}
