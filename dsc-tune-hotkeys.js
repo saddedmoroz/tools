@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name			DSC: хоткеи настраиваемые
-// @version			1.1
-// @description		28-02-2025
+// @version			1.2
+// @description		04-03-2025
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==
@@ -42,7 +42,6 @@ const gKeyRes = [
 	{ code: 'Digit5', index: 5, send: false },
 	{ code: 'Digit6', index: 6, send: false },
 ];
-const gKeyResLen = gKeyRes.length;
 
 /*
 	Клавиши для отправки резолюций (Готово).
@@ -53,20 +52,31 @@ const gKeySubmit = [
 	'Space',
 	'NumpadEnter',
 ];
-const gKeySubmitLen = gKeySubmit.length;
 
-// Задержка в мс перед вызовом клика по элементу. Ниже значения 50 ставить не рекомендую.
-const DELAY_CLICK = 50;
+const	DELAY_CLICK = 50, // задержка в мс перед вызовом клика по элементу. Менее 50 не рекомендую
+		KEY_COOLDOWN = 700; // таймаут обработки зажатой клавиши, значение в мс. Менее 700 не рекомендую
 
 
+// Здесь вся настройка заканчивается
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Далее рабочий код, логика
 
+
+let gDT = Date.now(), gDTNow;
+
+const	gKeySubmitLen = gKeySubmit.length,
+		gKeyResLen = gKeyRes.length;
 
 // Добавим обработчик нажатия клавиш
-document.addEventListener('keyup', ProcessKeyEvent);
+document.addEventListener('keydown', ProcessKeyEvent);
 
 // Обработчик нажатия клавиш
 function ProcessKeyEvent(e) {
+	// Учитывать таймаут перед обработкой следующего события зажатой клавиши. Отсеивает "лавину" событий
+	gDTNow = Date.now() + Math.random() * 100;
+	if (gDTNow - gDT < KEY_COOLDOWN) return;
+	gDT = gDTNow;
+
 	// внутри проекта?
 	const prjName = window.location.href.match(/\d+$/);
 	if (!Boolean(prjName)) return;
