@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name			DSC: 677 хоткеи (v2)
-// @version			1.3
-// @description		12-12-2024
-// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-hotkeys-mod-v2.js
-// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-hotkeys-mod-v2.js
+// @version			1.3.1
+// @description		05-03-2025
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-677-hotkeys/dsc-hotkeys-mod-v2.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-677-hotkeys/dsc-hotkeys-mod-v2.js
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==
