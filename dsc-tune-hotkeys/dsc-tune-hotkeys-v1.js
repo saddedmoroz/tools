@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name			DSC: хоткеи настраиваемые
+// @name			DSC: хоткеи настраиваемые v1 (кроме 677)
 // @version			1.3
 // @description		05-03-2025
-// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys.js
-// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys.js
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys-v1.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys-v1.js
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==
@@ -13,12 +13,6 @@
 'use strict';
 
 /*
-	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-	ВНИМАНИЕ! ПРИ ВКЛЮЧЕННОМ АВТООБНОВЛЕНИИ СКРИПТА ВСЕ НАСТРОЙКИ БУДУТ ПЕРЕЗАПИСАНЫ
-	Либо отключи автообновление в настройках расширения, либо удали 2 строки выше,
-	где есть @updateURL и @downloadURL и только потом вноси свои правки.
-	-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 	Клавиши для резолюций.
 	Клавиши можно задать свои, а ненужные удалить/закомментировать.
 	В каком порядке указаны индексы (index) в списке не имеет значения.
@@ -49,6 +43,10 @@ const gKeyRes = [
 	{ code: 'Digit4', index: 4, send: false },
 	{ code: 'Digit5', index: 5, send: false },
 	{ code: 'Digit6', index: 6, send: false },
+	{ code: 'Digit7', index: 7, send: false },
+	{ code: 'Digit8', index: 8, send: false },
+	{ code: 'Digit9', index: 9, send: false },
+	{ code: 'Digit0', index: 10, send: false },
 ];
 
 /*
@@ -81,7 +79,7 @@ const	DELAY_CLICK = 50, // задержка в мс перед вызовом к
 		gPrjPermit = [];
 */
 const	gPrjAllow = [], // если пусто - разрешено везде
-		gPrjPermit = []; // если пусто - без запретов
+		gPrjPermit = ['677']; // если пусто - без запретов
 
 // Здесь вся настройка заканчивается
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
