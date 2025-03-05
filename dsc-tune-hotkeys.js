@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name			DSC: хоткеи настраиваемые
-// @version			1.2
-// @description		04-03-2025
+// @version			1.3
+// @description		05-03-2025
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==
@@ -35,8 +35,8 @@
 		{ code: 'Numpad8', index: 4, send: false },
 */
 const gKeyRes = [
-	{ code: 'Digit1', index: 1, send: true }, // при нажатии на цифру 1 (не нумпад), будет выбрана первая резолюция в списке и сразу отправлена.
-	{ code: 'Digit2', index: 2, send: false }, // вторая резолюция в списке, но без отправки
+	{ code: 'Digit1', index: 1, send: false }, // при нажатии на цифру 1 (не нумпад) будет выбрана/снята первая резолюция, без отправки
+	{ code: 'Digit2', index: 2, send: false }, // вторая резолюция в списке, без отправки
 	{ code: 'Digit3', index: 3, send: false },
 	{ code: 'Digit4', index: 4, send: false },
 	{ code: 'Digit5', index: 5, send: false },
@@ -56,6 +56,24 @@ const gKeySubmit = [
 const	DELAY_CLICK = 50, // задержка в мс перед вызовом клика по элементу. Менее 50 не рекомендую
 		KEY_COOLDOWN = 800; // таймаут обработки зажатой клавиши, значение в мс. Менее 800 не рекомендую
 
+/*
+	Задать для каких проектов данный скрипт разрешен/запрещен.
+	Примеры:
+	Разрешить только для 677, запретить для 2066 и 755. Другие проекты будут игнорироваться.
+		gPrjAllow = ['677'],
+		gPrjPermit = ['2066', '755'];
+	Разрешить для всех проектов, кроме 755.
+		gPrjAllow = [],
+		gPrjPermit = ['755'];
+	Разрешить только для 677 и 1013. Другие проекты будут игнорироваться.
+		gPrjAllow = ['677', '1013'],
+		gPrjPermit = [];
+	Разрешить для всех проектов.
+		gPrjAllow = [],
+		gPrjPermit = [];
+*/
+const	gPrjAllow = [], // если пусто - разрешено везде
+		gPrjPermit = []; // если пусто - без запретов
 
 // Здесь вся настройка заканчивается
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -65,9 +83,11 @@ const	DELAY_CLICK = 50, // задержка в мс перед вызовом к
 let gDT = Date.now(), gDTNow;
 
 const	gKeySubmitLen = gKeySubmit.length,
-		gKeyResLen = gKeyRes.length;
+		gKeyResLen = gKeyRes.length,
+		gPrjAllowLen = gPrjAllow.length,
+		gPrjPermitLen = gPrjPermit.length;
 
-// Добавим обработчик нажатия клавиш
+// Обработчик нажатия клавиш
 document.addEventListener('keydown', ProcessKeyEvent);
 
 // Обработчик нажатия клавиш
@@ -78,18 +98,29 @@ function ProcessKeyEvent(e) {
 	gDT = gDTNow;
 
 	// внутри проекта?
-	const prjName = window.location.href.match(/\d+$/);
+	let prjName = window.location.href.match(/\d+$/);
 	if (!Boolean(prjName)) return;
+	prjName = prjName[0];
 
-	// если нужно ограничить активацию клавиш в определённом проекте
-	// if (prjName[0] != '677') return;
+	// проверить для какого проекта скрипт запрещен
+	let i = gPrjPermitLen;
+	while (i--) { if (prjName == gPrjPermit[i]) return; }
+
+	// проверить для какого проекта скрипт разрешен
+	i = gPrjAllowLen;
+	if (i) {
+		let prjPermit = true;
+		while (i--) { if (prjName == gPrjAllow[i]) { prjPermit = false; break; } }
+		if (prjPermit) return;
+	}
 
 	// выйти, если зажат модификатор
 	// if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) return;
 	if (e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) return;
 
 	// обработка клавиш резолюций
-	let i = gKeyResLen, key;
+	let key;
+	i = gKeyResLen;
 	while (i--) {
 		key = gKeyRes[i];
 		if (e.code.indexOf(key.code) >= 0) {
