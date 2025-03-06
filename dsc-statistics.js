@@ -2,8 +2,8 @@
 // @name			DSC: статистика
 // @version			2.1
 // @description		05-03-2025
-// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-statistics.js
-// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/dsc-statistics.js
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-statistics.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-statistics.js
 // @author			saddedmoroz
 // @match			https://centiman.avito.ru/service-dataset-collector-frontend/*
 // ==/UserScript==

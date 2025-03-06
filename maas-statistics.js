@@ -2,8 +2,8 @@
 // @name			Maas: дополнение к статистике
 // @version			1.15
 // @description		Дополнение к статистике в нижней панели
-// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/maas-statistics.js
-// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/maas-statistics.js
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/maas-statistics.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/maas-statistics.js
 // @author			saddedmoroz
 // @match			https://moderation.avito.ru/*
 // ==/UserScript==

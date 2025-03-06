@@ -2,9 +2,8 @@
 // @name			Maas: удобные категории НК
 // @version			1.8
 // @description		Отображает категории объявления в удобном виде
-// @author			saddedmoroz
-// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/maas-convenient-path.js
-// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/master/maas-convenient-path.js
+// @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/maas-convenient-path.js
+// @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/maas-convenient-path.js
 // @author			saddedmoroz
 // @match			https://moderation.avito.ru/*
 // ==/UserScript==
