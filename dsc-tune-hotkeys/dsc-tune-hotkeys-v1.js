@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			DSC: хоткеи настраиваемые v1 (кроме 677)
-// @version			1.4
+// @version			1.4.1
 // @description		06-03-2025
 // @updateURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys-v1.js
 // @downloadURL		https://raw.githubusercontent.com/saddedmoroz/tools/refs/heads/master/dsc-tune-hotkeys/dsc-tune-hotkeys-v1.js
@@ -53,6 +53,16 @@ const gKeyRes = [
 	{ code: 'Digit8', index: 8, send: false },
 	{ code: 'Digit9', index: 9, send: false },
 	{ code: 'Digit0', index: 10, send: false },
+	{ code: 'KeyQ', index: 1, send: true },
+	{ code: 'KeyW', index: 2, send: true },
+	{ code: 'KeyE', index: 3, send: true },
+	{ code: 'KeyR', index: 4, send: true },
+	{ code: 'KeyT', index: 5, send: true },
+	{ code: 'KeyY', index: 6, send: true },
+	{ code: 'KeyU', index: 7, send: true },
+	{ code: 'KeyI', index: 8, send: true },
+	{ code: 'KeyO', index: 9, send: true },
+	{ code: 'KeyP', index: 10, send: true }
 ];
 
 /*
